@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  develop:
+    build:
+      context: .
+      dockerfile: ./compose/local/Dockerfile
+    image: dev_env
+    command: sh -c "tmux"
+    ports:
+      - "22:12345"
+    volumes:
+      - .:/root/dev/working:cached
