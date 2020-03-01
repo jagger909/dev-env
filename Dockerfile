@@ -11,7 +11,7 @@ RUN echo "debconf debconf/frontend select Teletype" | debconf-set-selections && 
 
   apt-get update && \
   apt-get install -y ca-certificates &&\
-  apt-get install -y openssh-client git build-essential zsh vim tmux htop stow direnv ctags man make cmake ncurses-dev automake autoconf wget curl && \
+  apt-get install -y openssh-client git build-essential zsh vim vim-nox tmux htop stow direnv ctags man make cmake ncurses-dev automake autoconf wget curl && \
   apt-get install -y python-dev python-pip software-properties-common && \
 
 # Install ruby, which is used for github-auth
@@ -90,7 +90,7 @@ RUN git clone --depth 1 https://github.com/VundleVim/Vundle.vim \
   && git clone --depth 1 https://github.com/Yggdroot/indentLine
 
 RUN pip install powerline-status jedi flake8
-RUN vim +PlugInstall +qall
+RUN vim +PluginInstall +qall > /dev/null 2>&1
 RUN pip install tmuxp
 
 
