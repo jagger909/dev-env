@@ -11,11 +11,31 @@ RUN echo "debconf debconf/frontend select Teletype" | debconf-set-selections && 
 
   apt-get update && \
   apt-get install -y ca-certificates &&\
-  apt-get install -y openssh-client git build-essential zsh vim vim-nox tmux htop stow direnv ctags man make cmake ncurses-dev automake autoconf wget curl && \
-  apt-get install -y python-dev python-pip software-properties-common && \
+  apt-get install -y \
+  openssh-client \
+  git \
+  build-essential \
+  zsh \
+  vim \
+  vim-nox \
+  tmux \
+  htop \
+  stow \
+  direnv \
+  ctags \
+  man \
+  make \
+  cmake \
+  ncurses-dev \
+  automake \
+  autoconf \
+  wget \
+  curl \
+  python-dev \
+  python-pip \
+  ruby \
+  software-properties-common && \
 
-# Install ruby, which is used for github-auth
-  apt-get install -y ruby && \
 
 # Install the Github Auth gem, which will be used to get SSH keys from GitHub
 # to authorize users for SSH
@@ -113,7 +133,8 @@ RUN apt-get install -y openssh-server && \
 
 # Generate UTF-8 locale
 RUN apt-get install -y locales && \
-  locale-gen en_US en_US.UTF-8 && dpkg-reconfigure locales
+  locale-gen en_US en_US.UTF-8 &&  \
+  dpkg-reconfigure locales
 
 #RUN apt-get install -y sudo && \
   #    useradd dev -d /home/dev -m -s /bin/zsh &&\
