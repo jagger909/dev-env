@@ -31,8 +31,8 @@ RUN echo "debconf debconf/frontend select Teletype" | debconf-set-selections && 
   autoconf \
   wget \
   curl \
-  python-dev \
-  python-pip \
+  python3-dev \
+  python3-pip \
   ruby \
   software-properties-common && \
 
@@ -109,9 +109,9 @@ RUN git clone --depth 1 https://github.com/VundleVim/Vundle.vim \
   && git clone --depth 1 https://github.com/kshenoy/vim-signature \
   && git clone --depth 1 https://github.com/Yggdroot/indentLine
 
-RUN pip install powerline-status jedi flake8
+RUN pip3 install powerline-status jedi flake8
 RUN vim +PluginInstall +qall > /dev/null 2>&1
-RUN pip install tmuxp
+RUN pip3 install tmuxp pipenv
 
 
 

@@ -1,11 +1,9 @@
 # set name for envirments you want
 
-IMAGE_NAME=base_dev_env
+IMAGE_NAME=dev_env
 USER_NAME = $(USER)
 
 run_bash:
-	#GUI POSSIBLE
-	#sudo docker start $(IMAGE_NAME)
 	docker start $(IMAGE_NAME)
 	docker exec -ti $(IMAGE_NAME) /bin/zsh
 
@@ -15,18 +13,12 @@ build_image_again:
 	docker rm $(IMAGE_NAME)
 	docker rmi $(IMAGE_NAME)
 	docker build -t $(IMAGE_NAME) .
-	#sudo docker run -v /:/host_data/ --privileged -v /dev/:/dev/ -v /home/$(USER_NAME)/.Xauthority:/root/.Xauthority:rw --env "DISPLAY" --env QT_X11_NO_MITSHM=1 --net=host -ti --name $(IMAGE_NAME) $(IMAGE_NAME) /bin/bash
-	docker run -d -e AUTHORIZED_GH_USERS="jagger909" -p 0.0.0.0:12345:22 -v /home/tanya/PycharmProjects/:/working $(IMAGE_NAME)
+	docker run -d -e AUTHORIZED_GH_USERS="jagger909" -p 0.0.0.0:12345:22 -v /home/tanya/PycharmProjects/:/working --name $(IMAGE_NAME) $(IMAGE_NAME)
 
 build_only_image:
-
-	#for test
-	#sudo docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
-
 	#for build
 	docker build -t $(IMAGE_NAME) .
-	#sudo docker run --runtime=nvidia -v /:/host_data/ --privileged -v /dev/:/dev/ -v /home/$(USER_NAME)/.Xauthority:/root/.Xauthority:rw --env "DISPLAY" --env QT_X11_NO_MITSHM=1 --net=host -ti --name $(IMAGE_NAME) $(IMAGE_NAME) /bin/bash
-	docker run -d -e AUTHORIZED_GH_USERS="jagger909" -p 0.0.0.0:12345:22 -v /home/tanya/PycharmProjects/:/working $(IMAGE_NAME)
+	docker run -d -e AUTHORIZED_GH_USERS="jagger909" -p 0.0.0.0:12345:22 -v /home/tanya/PycharmProjects/:/working --name $(IMAGE_NAME) $(IMAGE_NAME)
 
 build_first_time:
 	#for build
