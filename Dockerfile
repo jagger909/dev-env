@@ -147,10 +147,10 @@ RUN mkdir -p /root/dev/working
 WORKDIR /root/dev/
 
 ENV TERM=xterm-256color
-ENV LANG=en_US.UTF-8
-ENV LC_CTYPE=en_US.UTF-8
+ENV LANG=C.UTF-8
+ENV LC_CTYPE=C.UTF-8
 
-CMD ["chsh -s $(which zsh)"]
+CMD ["chsh -s $(/bin/zsh)"]
 
 ADD ssh_key_adder.rb /root/ssh_key_adder.rb
 
